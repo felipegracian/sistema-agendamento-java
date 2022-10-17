@@ -14,12 +14,37 @@ import javax.swing.JOptionPane;
  */
 public class EspecialidadesDialog extends javax.swing.JDialog {
 
+    Especialidade especialidade;
+
     /**
      * Creates new form EspecialidadesDialog
      */
-    public EspecialidadesDialog(java.awt.Frame parent, boolean modal) {
+    public EspecialidadesDialog(
+            java.awt.Frame parent,
+            boolean modal,
+            Especialidade e) {
+
         super(parent, modal);
         initComponents();
+        especialidade = e;
+        preencherFormulario();
+    }
+
+    public EspecialidadesDialog(
+            java.awt.Frame parent,
+            boolean modal) {
+
+        super(parent, modal);
+        initComponents();
+
+    }
+
+    private void preencherFormulario() {
+        labelEspecialidadesAdicionar.setText("Especialidades - EDITAR");
+        labelEspecialidadesAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editar.png")));
+        textFieldCodigo.setText(especialidade.getCodigo().toString());
+        textFieldNomeEspecialidade.setText(especialidade.getNome());
+        textFieldDescricaoEspecialidade.setText(especialidade.getDescricao());
     }
 
     /**
@@ -126,20 +151,20 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_textFieldCodigoActionPerformed
 
     private void buttonSalvarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarEspecialidadeActionPerformed
-        
+
         // Criar uma especialidade
-        Especialidade especialidade = new Especialidade();
-        especialidade.setNome(textFieldNomeEspecialidade.getText());
-        especialidade.setDescricao(textFieldDescricaoEspecialidade.getText());
-        
+        Especialidade novaEspecialidade = new Especialidade();
+        novaEspecialidade.setNome(textFieldNomeEspecialidade.getText());
+        novaEspecialidade.setDescricao(textFieldDescricaoEspecialidade.getText());
+
         // Gravar o objeto, através do Dao
-        EspecialidadeDAO.gravar(especialidade);
-        
-        JOptionPane.showMessageDialog(this, 
-                "Especialidade gravada com sucesso", 
-                "Especialidades", 
+        EspecialidadeDAO.gravar(novaEspecialidade);
+
+        JOptionPane.showMessageDialog(this,
+                "Especialidade gravada com sucesso",
+                "Especialidades",
                 JOptionPane.INFORMATION_MESSAGE);
-        
+
         dispose();
     }//GEN-LAST:event_buttonSalvarEspecialidadeActionPerformed
 
