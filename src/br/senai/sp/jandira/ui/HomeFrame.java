@@ -13,6 +13,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     // Atributos da classe
     PanelEspecialidades panelEspecialidades;
+    PanelPlanosDeSaude panelPlanosDeSaude;
 
     // Constantes
     private final int POS_X = 20;
@@ -49,14 +50,15 @@ public class HomeFrame extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/agenda64.png"))); // NOI18N
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 10, 105, 64);
 
-        jLabel1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
         jLabel1.setText("Sistema para Agendamento de Consultas");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(190, 30, 510, 30);
@@ -99,6 +101,11 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonMedicos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         buttonMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/medico.png"))); // NOI18N
         buttonMedicos.setToolTipText("Médicos");
+        buttonMedicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMedicosActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonMedicos);
         buttonMedicos.setBounds(300, 100, 70, 50);
 
@@ -210,13 +217,19 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPacientesActionPerformed
 
     private void buttonPlanoSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoSaudeActionPerformed
-        // TODO add your handling code here:
+        panelEspecialidades.setVisible(false);
+        panelHome.setVisible(false);
+        panelPlanosDeSaude.setVisible(true);
     }//GEN-LAST:event_buttonPlanoSaudeActionPerformed
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         panelEspecialidades.setVisible(false);
         panelHome.setVisible(true);
     }//GEN-LAST:event_buttonHomeActionPerformed
+
+    private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonMedicosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,6 +265,15 @@ public class HomeFrame extends javax.swing.JFrame {
 
         getContentPane().add(panelEspecialidades);
         panelEspecialidades.setVisible(false);
+        
+        panelPlanosDeSaude = new PanelPlanosDeSaude();
+        panelPlanosDeSaude.setBounds(POS_X,
+                POS_Y,
+                LARGURA,
+                ALTURA);
+        
+        getContentPane().add(panelPlanosDeSaude);
+        panelPlanosDeSaude.setVisible(false);
     }
 
 }
