@@ -84,19 +84,20 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
         buttonSalvarEspecialidade = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 465));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(null);
 
-        labelEspecialidadesAdicionar.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelEspecialidadesAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelEspecialidadesAdicionar.setForeground(new java.awt.Color(0, 0, 0));
         labelEspecialidadesAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/plus.png"))); // NOI18N
         labelEspecialidadesAdicionar.setText("  Especialidades - ADICIONAR");
         jPanel1.add(labelEspecialidadesAdicionar);
         labelEspecialidadesAdicionar.setBounds(20, 12, 380, 40);
 
-        panelDetalhesEspecialidade.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes da especialidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 102, 102))); // NOI18N
+        panelDetalhesEspecialidade.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes da especialidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 102, 102))); // NOI18N
         panelDetalhesEspecialidade.setLayout(null);
 
         labelCodigo.setText("Código:");
@@ -163,7 +164,7 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
                 .addGap(0, 48, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(596, 463));
+        setSize(new java.awt.Dimension(600, 465));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

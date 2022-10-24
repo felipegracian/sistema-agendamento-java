@@ -56,10 +56,19 @@ public class PlanoDeSaudeDAO {
     }
 
     public static void criarListaPlanosDeSaude() {
-        PlanoDeSaude p1 = new PlanoDeSaude("Amil", "55321-470", "Preferencial",
-                LocalDate.of(2022, 03, 10));
-        
+
+        PlanoDeSaude p1 = new PlanoDeSaude("Amil", "171110-01",
+                "Individual",
+                LocalDate.of(2023, 01, 13));
+        PlanoDeSaude p2 = new PlanoDeSaude("Bradesco", "1927891-33",
+                "Pleno",
+                LocalDate.of(2023, 01, 13));
+        PlanoDeSaude p3 = new PlanoDeSaude("BioSaude", "55321-02",
+                "Empresarial",
+                LocalDate.of(2023, 01, 13));
         planosDeSaude.add(p1);
+        planosDeSaude.add(p2);
+        planosDeSaude.add(p3);
 
     }
 

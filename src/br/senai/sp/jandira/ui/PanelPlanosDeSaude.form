@@ -65,7 +65,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="310" width="80" height="50"/>
+          <AbsoluteConstraints x="520" y="310" width="60" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -75,9 +75,12 @@
           <Image iconType="3" name="/br/senai/sp/jandira/img/editaricone.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEditarPlanoDeSaudeActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="610" y="310" width="80" height="50"/>
+          <AbsoluteConstraints x="610" y="310" width="60" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -87,9 +90,12 @@
           <Image iconType="3" name="/br/senai/sp/jandira/img/adicionar.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAdicionarPlanoDeSaudeActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="700" y="310" width="80" height="50"/>
+          <AbsoluteConstraints x="700" y="310" width="60" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
