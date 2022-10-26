@@ -79,7 +79,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
         buttonExcluirEspecialidades.setBounds(520, 280, 80, 50);
 
         buttonEditarEspecialidades.setBackground(new java.awt.Color(204, 204, 204));
-        buttonEditarEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editar.png"))); // NOI18N
+        buttonEditarEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editaricone.png"))); // NOI18N
         buttonEditarEspecialidades.setToolTipText("Editar especialidade selecionada");
         buttonEditarEspecialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

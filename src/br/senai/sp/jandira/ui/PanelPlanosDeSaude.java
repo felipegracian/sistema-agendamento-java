@@ -145,9 +145,9 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
 
         PlanosDeSaudeDialog planosDeSaudeDialog = new PlanosDeSaudeDialog(
-                null, true, OperacaoEnum.EDITAR);
-                
-
+                null, true, planoDeSaude,
+                OperacaoEnum.EDITAR);
+        
         planosDeSaudeDialog.setVisible(true);
         preencherTabela();
     }

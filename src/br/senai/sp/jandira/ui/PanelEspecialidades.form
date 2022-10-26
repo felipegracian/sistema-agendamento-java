@@ -83,7 +83,7 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/senai/sp/jandira/img/editar.png"/>
+          <Image iconType="3" name="/br/senai/sp/jandira/img/editaricone.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Editar especialidade selecionada"/>
       </Properties>

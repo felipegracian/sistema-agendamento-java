@@ -3,6 +3,7 @@ package br.senai.sp.jandira.dao;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,10 +60,10 @@ public class PlanoDeSaudeDAO {
 
         PlanoDeSaude p1 = new PlanoDeSaude("Amil", "171110-01",
                 "Individual",
-                LocalDate.of(2023, 01, 13));
+                LocalDate.of(2025, 12, 29));
         PlanoDeSaude p2 = new PlanoDeSaude("Bradesco", "1927891-33",
                 "Pleno",
-                LocalDate.of(2023, 01, 13));
+                LocalDate.of(2023, 9, 11));
         PlanoDeSaude p3 = new PlanoDeSaude("BioSaude", "55321-02",
                 "Empresarial",
                 LocalDate.of(2023, 01, 13));
@@ -83,7 +84,8 @@ public class PlanoDeSaudeDAO {
             dados[i][1] = p.getOperadora();
             dados[i][2] = p.getNumero();
             dados[i][3] = p.getCategoria();
-            dados[i][4] = p.getValidade().toString();
+            DateTimeFormatter padraoBrasileiro = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            dados[i][4] = p.getValidade().format(padraoBrasileiro);
         }
 
         return new DefaultTableModel(dados, titulo);

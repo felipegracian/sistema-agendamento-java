@@ -170,6 +170,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/br/senai/sp/jandira/img/estetoscopio.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Especialidades"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEspecialidadesActionPerformed"/>
@@ -191,6 +192,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/br/senai/sp/jandira/img/plano-de-saude.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Planos de Sa&#xfa;de"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonPlanoSaudeActionPerformed"/>

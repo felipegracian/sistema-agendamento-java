@@ -112,6 +112,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonEspecialidades.setBackground(new java.awt.Color(204, 204, 204));
         buttonEspecialidades.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         buttonEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/estetoscopio.png"))); // NOI18N
+        buttonEspecialidades.setToolTipText("Especialidades");
         buttonEspecialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEspecialidadesActionPerformed(evt);
@@ -123,6 +124,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPlanoSaude.setBackground(new java.awt.Color(204, 204, 204));
         buttonPlanoSaude.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         buttonPlanoSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/plano-de-saude.png"))); // NOI18N
+        buttonPlanoSaude.setToolTipText("Planos de Saúde");
         buttonPlanoSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonPlanoSaudeActionPerformed(evt);
@@ -202,7 +204,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
-        // TODO add your handling code here:
+        panelHome.setVisible(true);
     }//GEN-LAST:event_buttonSairActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
