@@ -1,20 +1,39 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
-
-    /*
-    Essa classe será responsável pela persistência de dados
-    das especialidades, por exemplo, adicionar uma nova especialidade,
-    excluir uma especialidade, etc.
-     */
+    //Atributos de classe para gravar em um arquivo
+    private final static String URL = "C:\\Users\\22282790\\java\\Especialidades.txt";
+    private final static Path PATH = Paths.get(URL);
+    
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
 
     public static void gravar(Especialidade e) { // CREATE
         especialidades.add(e);
+        
+        //**Gravar em arquivo**
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            escritor.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro");
+        }
     }
 
     public static ArrayList<Especialidade> getEspecialidades() { // READ
@@ -58,15 +77,32 @@ public class EspecialidadeDAO {
     
     // Criar uma lista inicial de especialidades
     public static void criarListaDeEspecialidades(){
-        Especialidade e1 = new Especialidade("Cardiologia", "Parte da medicina que cuida do coração");
-        Especialidade e2 = new Especialidade("Neurologia", "Parte da medicina que cuida da cabeça");
-        Especialidade e3 = new Especialidade("Pediatra", "Parte da medicina que cuida das crianças");
-        Especialidade e4 = new Especialidade("Nefrologia", "Parte da medicina que cuida das doenças do sistema urinário, principalmente relacionadas ao rim.");
         
-        especialidades.add(e1);
-        especialidades.add(e2);
-        especialidades.add(e3);
-        especialidades.add(e4);
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            String linha = leitor.readLine();
+            
+            while(linha != null){
+                //Transformar os dados da linha em uma especialidade
+                String[] vetor = linha.split(";");
+                Especialidade e = new Especialidade(vetor[1],
+                        vetor[2],
+                Integer.valueOf(vetor[0]));
+                
+                //Guardar a especialidade na lista
+                especialidades.add(e);
+                
+                //Ler a próxima linha
+                linha = leitor.readLine();
+            }
+            
+            leitor.close();
+            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro");
+        }
+  
     }
 
     public static DefaultTableModel getTabelaEspecialidades() {

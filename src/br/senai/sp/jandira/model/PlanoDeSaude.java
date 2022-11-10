@@ -12,7 +12,7 @@ public class PlanoDeSaude {
     private static int contador = 99;
     private Integer codigo;
 
-    public PlanoDeSaude(String operadora, String numero, String categoria , LocalDate validade ) {
+    public PlanoDeSaude(String operadora, String numero, String categoria, LocalDate validade) {
         this.operadora = operadora;
         this.validade = validade;
         this.numero = numero;
@@ -23,6 +23,15 @@ public class PlanoDeSaude {
     public PlanoDeSaude() {
         this.quantidade++;
         gerarCodigo();
+    }
+
+    public PlanoDeSaude(String operadora, String numero, String categoria, LocalDate validade, Integer codigo) {
+        this.operadora = operadora;
+        this.validade = validade;
+        this.numero = numero;
+        this.categoria = categoria;
+        this.codigo = codigo;
+        this.contador = codigo;
     }
 
     private void gerarCodigo() {
@@ -72,6 +81,11 @@ public class PlanoDeSaude {
 
     public static int getQuantidade() {
         return quantidade;
+    }
+
+    public String getPlanoDeSaudeSeparadoPorPontoEVirgula() {
+        return this.codigo + ";" + this.operadora + ";" + this.categoria
+                + ";" + this.numero + ";" + this.validade;
     }
 
 }

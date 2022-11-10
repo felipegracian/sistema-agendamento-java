@@ -4,68 +4,94 @@ import java.time.LocalDate;
 
 public class Paciente {
 
-	private String nome;
-	private LocalDate dataDeNascimento;
-	private String telefone;
-	private Endereco endereco;
-	private String rg;
-	private String cpf;
-	private PlanoDeSaude planoDeSaude;
+    private static int contador = 99;
+    private Integer codigo;
+    private String nome;
+    private LocalDate dataDeNascimento;
+    private String telefone;
+    private Endereco endereco;
+    private String rg;
+    private String cpf;
+    private PlanoDeSaude planoDeSaude;
+    
+    public Paciente(String nome, String cpf, LocalDate dataDeNascimento) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataDeNascimento = dataDeNascimento;
+        gerarCodigo();
+    }
+    
+    public Paciente() {
+        gerarCodigo();
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    private void gerarCodigo() {
+        this.contador++;
+        this.codigo = contador;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public int getContador() {
+        return contador;
+    }
 
-	public LocalDate getDataDeNascimento() {
-		return dataDeNascimento;
-	}
+    public Integer getCodigo() {
+        return codigo;
+    }
 
-	public void setDataDeNascimento(LocalDate dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getTelefone() {
-		return telefone;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
+    public LocalDate getDataDeNascimento() {
+        return dataDeNascimento;
+    }
 
-	public String getRg() {
-		return rg;
-	}
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
 
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
+    public String getTelefone() {
+        return telefone;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+    public String getRg() {
+        return rg;
+    }
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+    public String getCpf() {
+        return cpf;
+    }
 
-	public PlanoDeSaude getPlanoDeSaude() {
-		return planoDeSaude;
-	}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-	public void setPlanoDeSaude(PlanoDeSaude planoDeSaude) {
-		this.planoDeSaude = planoDeSaude;
-	}
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public PlanoDeSaude getPlanoDeSaude() {
+        return planoDeSaude;
+    }
+
+    public void setPlanoDeSaude(PlanoDeSaude planoDeSaude) {
+        this.planoDeSaude = planoDeSaude;
+    }
 
 }

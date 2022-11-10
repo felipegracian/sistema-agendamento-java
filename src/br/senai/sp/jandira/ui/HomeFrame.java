@@ -14,6 +14,7 @@ public class HomeFrame extends javax.swing.JFrame {
     // Atributos da classe
     PanelEspecialidades panelEspecialidades;
     PanelPlanosDeSaude panelPlanosDeSaude;
+    PanelPacientes panelPacientes;
 
     // Constantes
     private final int POS_X = 20;
@@ -215,7 +216,10 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPacientesActionPerformed
-        // TODO add your handling code here:
+        panelEspecialidades.setVisible(false);
+        panelHome.setVisible(false);
+        panelPlanosDeSaude.setVisible(false);
+        panelPacientes.setVisible(true);
     }//GEN-LAST:event_buttonPacientesActionPerformed
 
     private void buttonPlanoSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoSaudeActionPerformed
@@ -267,13 +271,13 @@ public class HomeFrame extends javax.swing.JFrame {
 
         getContentPane().add(panelEspecialidades);
         panelEspecialidades.setVisible(false);
-        
+
         panelPlanosDeSaude = new PanelPlanosDeSaude();
         panelPlanosDeSaude.setBounds(POS_X,
                 POS_Y,
                 LARGURA,
                 ALTURA);
-        
+
         getContentPane().add(panelPlanosDeSaude);
         panelPlanosDeSaude.setVisible(false);
     }

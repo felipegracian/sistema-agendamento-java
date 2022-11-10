@@ -1,23 +1,45 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.PlanoDeSaude;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class PlanoDeSaudeDAO {
 
-    /*
-    Essa classe será responsável pela persistência de dados
-    dos Planos de Saude, por exemplo, adicionar um nova plano de saude,
-    excluir uma plano de saude, etc.
-     */
+    //Atributos de classe para gravar em um arquivo
+    private final static String URL
+            = "C:\\Users\\22282790\\java\\PlanosDeSaude.txt";
+    private final static Path PATH = Paths.get(URL);
+
     private static ArrayList<PlanoDeSaude> planosDeSaude = new ArrayList<>();
 
     public static void gravar(PlanoDeSaude p) {
         planosDeSaude.add(p);
+
+        //**Gravar em um arquivo**
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            escritor.write(p.getPlanoDeSaudeSeparadoPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro");
+        }
     }
 
     public static ArrayList<PlanoDeSaude> getPlanoDeSaude() {
@@ -58,18 +80,33 @@ public class PlanoDeSaudeDAO {
 
     public static void criarListaPlanosDeSaude() {
 
-        PlanoDeSaude p1 = new PlanoDeSaude("Amil", "171110-01",
-                "Individual",
-                LocalDate.of(2025, 12, 29));
-        PlanoDeSaude p2 = new PlanoDeSaude("Bradesco", "1927891-33",
-                "Pleno",
-                LocalDate.of(2023, 9, 11));
-        PlanoDeSaude p3 = new PlanoDeSaude("BioSaude", "55321-02",
-                "Empresarial",
-                LocalDate.of(2023, 01, 13));
-        planosDeSaude.add(p1);
-        planosDeSaude.add(p2);
-        planosDeSaude.add(p3);
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            String linha = leitor.readLine();
+
+            while (linha != null) {
+                //Transformar os dados da linha em um Plano de Saude
+                String[] vetor = linha.split(";");
+                
+                PlanoDeSaude p = new PlanoDeSaude(vetor[1],
+                        vetor[2],
+                        vetor[3],
+                        LocalDate.parse(vetor[4]),
+                        Integer.valueOf(vetor[0]));
+
+                //Gravar o plano na lista
+                planosDeSaude.add(p);
+
+                //Ler a próxima linha
+                linha = leitor.readLine();
+            }
+
+            leitor.close();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro");
+        }
 
     }
 
