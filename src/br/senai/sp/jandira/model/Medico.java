@@ -1,51 +1,77 @@
 package br.senai.sp.jandira.model;
 
+import java.time.LocalDate;
+
 public class Medico {
 
-	private String nome;
-	private Especialidade[] especialidades;
-	private String telefone;
-	private String email;
-	private String crm;
+    private static int contador = 99;
+    private Integer codigo;
+    private String nome;
+    private Especialidade[] especialidades;
+    private String telefone;
+    private String email;
+    private String crm;
+    private LocalDate dataDeNascimento;
 
-	public String getNome() {
-		return nome;
-	}
+    private void gerarCodigo() {
+        this.contador++;
+        this.codigo = contador;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public int getContador() {
+        return contador;
+    }
 
-	public Especialidade[] getEspecialidades() {
-		return especialidades;
-	}
+    public Integer getCodigo() {
+        return codigo;
+    }
 
-	public void setEspecialidades(Especialidade[] especialidades) {
-		this.especialidades = especialidades;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getTelefone() {
-		return telefone;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
+    public Especialidade[] getEspecialidades() {
+        return especialidades;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setEspecialidades(Especialidade[] especialidades) {
+        this.especialidades = especialidades;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getTelefone() {
+        return telefone;
+    }
 
-	public String getCrm() {
-		return crm;
-	}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
-	public void setCrm(String crm) {
-		this.crm = crm;
-	}
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public void setdataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public LocalDate getdataDeNascimento() {
+        return dataDeNascimento;
+    }
 
 }
