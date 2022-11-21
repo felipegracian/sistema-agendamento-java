@@ -246,7 +246,8 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         textFieldNumero.setText(planoDeSaude.getNumero());
         textFieldOperadora.setText(planoDeSaude.getOperadora());
         textFieldCategoria.setText(planoDeSaude.getCategoria());
-        formattedFieldDataDeValidade.setText(planoDeSaude.getValidade().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        formattedFieldDataDeValidade.setText(planoDeSaude.getValidade()
+                .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
     private void preencherTitulo() {

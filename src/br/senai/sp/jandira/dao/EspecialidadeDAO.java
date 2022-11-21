@@ -106,7 +106,7 @@ public class EspecialidadeDAO {
             
             bwTemp.close();
             
-            //Excluir arquivo atual e renomear aqruivo temporário
+            //Excluir arquivo atual e renomear arquivo temporário
             arquivoAtual.delete();
             arquivoTemp.renameTo(arquivoAtual);
 
