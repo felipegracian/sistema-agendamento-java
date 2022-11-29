@@ -4,10 +4,16 @@
  */
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
+import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +33,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         initComponents();
         this.operacao = operacao;
         preencherTitulo();
+        preencherListaEspecialidade();
     }
 
     public MedicosDialog(java.awt.Frame parent,
@@ -39,6 +46,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         this.operacao = operacao;
         preencherFormulario();
         preencherTitulo();
+        preencherListaEspecialidade();
     }
 
     /**
@@ -159,18 +167,13 @@ public class MedicosDialog extends javax.swing.JDialog {
     panelDetalhesMedico.add(labelEspecialidadesDoMedico);
     labelEspecialidadesDoMedico.setBounds(310, 170, 170, 16);
 
-    jListTabelaEspecialidades.setModel(new javax.swing.AbstractListModel<String>() {
-        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-        public int getSize() { return strings.length; }
-        public String getElementAt(int i) { return strings[i]; }
-    });
     scrollTabelaEspecialidades.setViewportView(jListTabelaEspecialidades);
 
     panelDetalhesMedico.add(scrollTabelaEspecialidades);
     scrollTabelaEspecialidades.setBounds(40, 190, 150, 120);
 
     buttonMoverEspecialidade1.setBackground(new java.awt.Color(0, 153, 0));
-    buttonMoverEspecialidade1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    buttonMoverEspecialidade1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
     buttonMoverEspecialidade1.setForeground(new java.awt.Color(255, 255, 255));
     buttonMoverEspecialidade1.setText(">");
     buttonMoverEspecialidade1.addActionListener(new java.awt.event.ActionListener() {
@@ -179,10 +182,10 @@ public class MedicosDialog extends javax.swing.JDialog {
         }
     });
     panelDetalhesMedico.add(buttonMoverEspecialidade1);
-    buttonMoverEspecialidade1.setBounds(220, 188, 40, 40);
+    buttonMoverEspecialidade1.setBounds(220, 188, 60, 40);
 
     buttonReturnEspecialidade.setBackground(new java.awt.Color(255, 0, 0));
-    buttonReturnEspecialidade.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    buttonReturnEspecialidade.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
     buttonReturnEspecialidade.setForeground(new java.awt.Color(255, 255, 255));
     buttonReturnEspecialidade.setText("<");
     buttonReturnEspecialidade.addActionListener(new java.awt.event.ActionListener() {
@@ -191,13 +194,8 @@ public class MedicosDialog extends javax.swing.JDialog {
         }
     });
     panelDetalhesMedico.add(buttonReturnEspecialidade);
-    buttonReturnEspecialidade.setBounds(220, 240, 40, 40);
+    buttonReturnEspecialidade.setBounds(220, 240, 60, 40);
 
-    jListEspecialidadesdoMedico.setModel(new javax.swing.AbstractListModel<String>() {
-        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-        public int getSize() { return strings.length; }
-        public String getElementAt(int i) { return strings[i]; }
-    });
     scrollEspecialidadesdoMedico.setViewportView(jListEspecialidadesdoMedico);
 
     panelDetalhesMedico.add(scrollEspecialidadesdoMedico);
@@ -207,24 +205,26 @@ public class MedicosDialog extends javax.swing.JDialog {
     panelDetalhesMedico.setBounds(10, 100, 710, 340);
 
     buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/cancelar.png"))); // NOI18N
+    buttonCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
     buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             buttonCancelarActionPerformed(evt);
         }
     });
     getContentPane().add(buttonCancelar);
-    buttonCancelar.setBounds(480, 450, 38, 60);
+    buttonCancelar.setBounds(500, 450, 60, 50);
 
     buttonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/salve-.png"))); // NOI18N
+    buttonSalvar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
     buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             buttonSalvarActionPerformed(evt);
         }
     });
     getContentPane().add(buttonSalvar);
-    buttonSalvar.setBounds(590, 450, 38, 60);
+    buttonSalvar.setBounds(590, 450, 60, 50);
 
-    pack();
+    setBounds(0, 0, 746, 536);
     }// </editor-fold>//GEN-END:initComponents
 
     private void textfieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldCodigoActionPerformed
@@ -240,7 +240,7 @@ public class MedicosDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonReturnEspecialidadeActionPerformed
 
     private void buttonMoverEspecialidade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoverEspecialidade1ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_buttonMoverEspecialidade1ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
@@ -251,7 +251,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         if (operacao == OperacaoEnum.ADICIONAR) {
             adicionar();
         } else {
-            
+
         }
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
@@ -265,8 +265,8 @@ public class MedicosDialog extends javax.swing.JDialog {
     private javax.swing.JButton buttonReturnEspecialidade;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JFormattedTextField formattedFieldDataDeNascimento;
-    private javax.swing.JList<String> jListEspecialidadesdoMedico;
-    private javax.swing.JList<String> jListTabelaEspecialidades;
+    private javax.swing.JList<Especialidade> jListEspecialidadesdoMedico;
+    private javax.swing.JList<Especialidade> jListTabelaEspecialidades;
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JLabel labelCrm;
     private javax.swing.JLabel labelDataDeNascimento;
@@ -308,24 +308,30 @@ public class MedicosDialog extends javax.swing.JDialog {
 
     private void adicionar() {
         CharSequence teste = " ";
-        
-        if (textFieldCrm.getText().isEmpty()){
+
+        if (textFieldCrm.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
             textFieldCrm.requestFocus();
-        } else if (textFieldNome.getText().isEmpty()){
+        } else if (textFieldNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
             textFieldNome.requestFocus();
-        } else if (textFieldEmail.getText().isEmpty()){
+        } else if (textFieldEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
             textFieldEmail.requestFocus();
-        } else if (textFieldTelefone.getText().isEmpty()){
+        } else if (textFieldTelefone.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
             textFieldTelefone.requestFocus();
-        } else if (formattedFieldDataDeNascimento.getText().contains(teste) == true){
+        } else if (formattedFieldDataDeNascimento.getText().contains(teste) == true) {
             JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
             formattedFieldDataDeNascimento.requestFocus();
         } else {
-           
+
         }
     }
+
+    private void preencherListaEspecialidade() {
+        jListTabelaEspecialidades.setModel(EspecialidadeDAO.preencherEspecialidade());
+    }
+    
+    
 }

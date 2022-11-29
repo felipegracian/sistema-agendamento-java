@@ -68,6 +68,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         scrollPlanosDeSaude.setBounds(10, 10, 780, 290);
 
         buttonExcluirPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/excluir.png"))); // NOI18N
+        buttonExcluirPlanoDeSaude.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonExcluirPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirPlanoDeSaudeActionPerformed(evt);
@@ -77,6 +78,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         buttonExcluirPlanoDeSaude.setBounds(520, 310, 60, 40);
 
         buttonEditarPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editaricone.png"))); // NOI18N
+        buttonEditarPlanoDeSaude.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonEditarPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditarPlanoDeSaudeActionPerformed(evt);
@@ -86,6 +88,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         buttonEditarPlanoDeSaude.setBounds(610, 310, 60, 40);
 
         buttonAdicionarPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/adicionar.png"))); // NOI18N
+        buttonAdicionarPlanoDeSaude.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonAdicionarPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAdicionarPlanoDeSaudeActionPerformed(evt);

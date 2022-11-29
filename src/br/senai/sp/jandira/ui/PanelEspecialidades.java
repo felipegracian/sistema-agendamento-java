@@ -69,6 +69,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
 
         buttonExcluirEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/excluir.png"))); // NOI18N
         buttonExcluirEspecialidades.setToolTipText("Excluir a especialidade selecionada");
+        buttonExcluirEspecialidades.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonExcluirEspecialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirEspecialidadesActionPerformed(evt);
@@ -79,6 +80,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
 
         buttonEditarEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editaricone.png"))); // NOI18N
         buttonEditarEspecialidades.setToolTipText("Editar especialidade selecionada");
+        buttonEditarEspecialidades.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonEditarEspecialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditarEspecialidadesActionPerformed(evt);
@@ -89,6 +91,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
 
         buttonGravarEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/plus.png"))); // NOI18N
         buttonGravarEspecialidades.setToolTipText("Criar nova especialidade");
+        buttonGravarEspecialidades.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonGravarEspecialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGravarEspecialidadesActionPerformed(evt);

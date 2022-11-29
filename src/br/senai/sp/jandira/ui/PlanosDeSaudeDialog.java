@@ -124,6 +124,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         labelValidade.setBounds(410, 40, 110, 16);
 
         buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/cancelar.png"))); // NOI18N
+        buttonCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCancelarActionPerformed(evt);
@@ -133,6 +134,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         buttonCancelar.setBounds(380, 250, 80, 50);
 
         buttonGravarPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/salve-.png"))); // NOI18N
+        buttonGravarPlanoDeSaude.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonGravarPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGravarPlanoDeSaudeActionPerformed(evt);

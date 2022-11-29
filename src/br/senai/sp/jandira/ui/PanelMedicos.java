@@ -5,6 +5,9 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.Medico;
+import br.senai.sp.jandira.model.OperacaoEnum;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -12,15 +15,15 @@ import javax.swing.JTable;
  * @author 22282790
  */
 public class PanelMedicos extends javax.swing.JPanel {
-   
+
     private int linha;
-    
+
     public PanelMedicos() {
         initComponents();
         MedicoDAO.criarListaDeMedicos();
         preencherTabela();
     }
-    
+
     private int getLinha() {
         linha = tableMedicos.getSelectedRow();
         return linha;
@@ -63,6 +66,7 @@ public class PanelMedicos extends javax.swing.JPanel {
 
         buttonExcluirMédico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/excluir.png"))); // NOI18N
         buttonExcluirMédico.setToolTipText("Excluir o médico selecionado");
+        buttonExcluirMédico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonExcluirMédico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirMédicoActionPerformed(evt);
@@ -73,6 +77,7 @@ public class PanelMedicos extends javax.swing.JPanel {
 
         buttonEditarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editaricone.png"))); // NOI18N
         buttonEditarMedico.setToolTipText("Editar o médico selecionado");
+        buttonEditarMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonEditarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditarMedicoActionPerformed(evt);
@@ -83,6 +88,7 @@ public class PanelMedicos extends javax.swing.JPanel {
 
         buttonGravarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/plus.png"))); // NOI18N
         buttonGravarMedico.setToolTipText("Adicionar médico");
+        buttonGravarMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonGravarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGravarMedicoActionPerformed(evt);
@@ -94,16 +100,36 @@ public class PanelMedicos extends javax.swing.JPanel {
 
     private void buttonExcluirMédicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirMédicoActionPerformed
 
-     
+        if (getLinha() != -1) {
+            excluirMedico();
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Por Favor, selecione o médico que você deseja excluir",
+                    "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_buttonExcluirMédicoActionPerformed
 
     private void buttonEditarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarMedicoActionPerformed
 
-    
+        if (getLinha() != -1) {
+            editarMedico();
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Selecione a especialidade desejada!",
+                    "Especialidades",
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_buttonEditarMedicoActionPerformed
 
     private void buttonGravarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGravarMedicoActionPerformed
-     
+        MedicosDialog dialog = new MedicosDialog(null,
+                true, OperacaoEnum.ADICIONAR);
+        preencherTabela();
+        dialog.setVisible(true);
+        preencherTabela();
     }//GEN-LAST:event_buttonGravarMedicoActionPerformed
 
 
@@ -132,5 +158,37 @@ public class PanelMedicos extends javax.swing.JPanel {
         tableMedicos.getColumnModel().getColumn(0).setPreferredWidth(100);
         tableMedicos.getColumnModel().getColumn(1).setPreferredWidth(300);
         tableMedicos.getColumnModel().getColumn(2).setPreferredWidth(360);
+    }
+
+    private void excluirMedico() {
+        int resposta = JOptionPane.showConfirmDialog(this,
+                "Você confirma a exclusão?",
+                "Atenção!",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (resposta == 0) {
+
+            MedicoDAO.excluir(getCodigo());
+            preencherTabela();
+        }
+    }
+
+    private Integer getCodigo() {
+        String codigoStr = tableMedicos.getValueAt(getLinha(), 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr);
+
+        return codigo;
+    }
+
+    private void editarMedico() {
+        Medico medico = MedicoDAO.getMedico(getCodigo());
+        
+        MedicosDialog medicosDialog = new MedicosDialog(null,
+                true,
+                OperacaoEnum.EDITAR,
+                medico);
+        medicosDialog.setVisible(true);
+        preencherTabela();
     }
 }

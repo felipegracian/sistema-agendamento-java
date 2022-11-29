@@ -63,6 +63,11 @@
           <Image iconType="3" name="/br/senai/sp/jandira/img/excluir.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Excluir o m&#xe9;dico selecionado"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonExcluirM&#xe9;dicoActionPerformed"/>
@@ -79,6 +84,11 @@
           <Image iconType="3" name="/br/senai/sp/jandira/img/editaricone.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Editar o m&#xe9;dico selecionado"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEditarMedicoActionPerformed"/>
@@ -95,6 +105,11 @@
           <Image iconType="3" name="/br/senai/sp/jandira/img/plus.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Adicionar m&#xe9;dico"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonGravarMedicoActionPerformed"/>
