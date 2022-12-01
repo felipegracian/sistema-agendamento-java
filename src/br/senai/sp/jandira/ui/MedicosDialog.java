@@ -8,12 +8,17 @@ import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
+import java.awt.List;
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +29,8 @@ public class MedicosDialog extends javax.swing.JDialog {
 
     private Medico medico;
     private OperacaoEnum operacao;
+    private java.util.List<Especialidade> selecionados = new ArrayList<Especialidade>();
+    DefaultListModel<Especialidade> listaEspecialidade = new DefaultListModel<>();
 
     //**Creates a New form MedicosDialog**
     public MedicosDialog(java.awt.Frame parent,
@@ -236,11 +243,22 @@ public class MedicosDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_formattedFieldDataDeNascimentoActionPerformed
 
     private void buttonReturnEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnEspecialidadeActionPerformed
-        // TODO add your handling code here:
+        if (jListTabelaEspecialidades.getSelectedValuesList().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro.");
+        } else {
+            removeEspecialidade();
+        }
     }//GEN-LAST:event_buttonReturnEspecialidadeActionPerformed
 
     private void buttonMoverEspecialidade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoverEspecialidade1ActionPerformed
-       
+
+        if (jListTabelaEspecialidades.getSelectedValuesList().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro.");
+        } else {
+            adicionaEspecialidade();
+        }
     }//GEN-LAST:event_buttonMoverEspecialidade1ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
@@ -308,30 +326,64 @@ public class MedicosDialog extends javax.swing.JDialog {
 
     private void adicionar() {
         CharSequence teste = " ";
+        
 
         if (textFieldCrm.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
+            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos 1");
             textFieldCrm.requestFocus();
         } else if (textFieldNome.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
+            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos 2");
             textFieldNome.requestFocus();
         } else if (textFieldEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
+            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos 3");
             textFieldEmail.requestFocus();
         } else if (textFieldTelefone.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
+            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos 4");
             textFieldTelefone.requestFocus();
         } else if (formattedFieldDataDeNascimento.getText().contains(teste) == true) {
-            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos");
+            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos 5");
             formattedFieldDataDeNascimento.requestFocus();
-        } else {
-
+        } else if (jListEspecialidadesdoMedico.getModel().getSize() == 0) { 
+            JOptionPane.showMessageDialog(this, "Campos obrigatórios não preenchidos 6");
+            jListEspecialidadesdoMedico.requestFocus();
         }
     }
 
     private void preencherListaEspecialidade() {
         jListTabelaEspecialidades.setModel(EspecialidadeDAO.preencherEspecialidade());
     }
-    
-    
+
+    private void adicionaEspecialidade() {
+
+        selecionados = jListTabelaEspecialidades.getSelectedValuesList();
+
+        try {
+            Iterator itens = selecionados.iterator();
+            while (itens.hasNext()) {
+                Especialidade especialidades = (Especialidade) itens.next();
+                listaEspecialidade.addElement(especialidades);
+                jListEspecialidadesdoMedico.setModel(listaEspecialidade);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro.");
+        }
+    }
+
+    private void removeEspecialidade() {
+        selecionados = jListEspecialidadesdoMedico.getSelectedValuesList();
+
+        try {
+            Iterator itens = selecionados.iterator();
+            while (itens.hasNext()) {
+                Especialidade especialidades = (Especialidade) itens.next();
+                listaEspecialidade.removeElement(especialidades);
+                jListEspecialidadesdoMedico.setModel(listaEspecialidade);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro.");
+        }
+    }
+
 }
